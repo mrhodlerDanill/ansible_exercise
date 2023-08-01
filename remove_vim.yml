@@ -8,5 +8,5 @@
     apt:
       name: vim
       state: absent
-    when: ansible_system == "Windows"    
+    when: ansible_system == "WindowsOS"    
   
