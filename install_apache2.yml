@@ -6,11 +6,12 @@
 
   - name: install apache2 puckage
     apt:
-      name: apache2
+      name:
+        - apache2
+        - vim-nox    
       state: latest
+      update_cache: yes 
+    when: ansible_distribution_version == "Ubuntu"
  
-  - name: remove vim-nox
-    apt:
-      name: vim-nox
-      state: absent   
-  
+
+
