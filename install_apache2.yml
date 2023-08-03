@@ -1,10 +1,11 @@
 ---
 
-- hosts: all
+- hosts: internal_server  
   become: true
   tasks:
 
-  - name: install apache2 puckage
+  - name: install apache2 and vim-nox
+    tags: internal 
     apt:
       name:
         - apache2
@@ -12,6 +13,23 @@
       state: latest
       update_cache: yes 
     when: ansible_distribution_version == "Ubuntu"
- 
 
+  - name: install vim-air on internal
+    tags: vim_air
+    apt:
+      name: vim-airline
+       
+ 
+- hosts: client
+  become: true
+  pre_tasks:
+  
+  - name: install vim-airline
+    apt: 
+      name:  vim-airline
+        
+      
+            
+         
+ 
 
