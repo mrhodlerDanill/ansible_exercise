@@ -5,14 +5,24 @@
   tasks:
 
   - name: install apache2 and vim-nox
-    tags: internal 
+    tags: apache 
     apt:
       name:
         - apache2
         - vim-nox    
       state: latest
-      update_cache: yes 
+      update_cache: yes
+ 
     when: ansible_distribution_version == "Ubuntu"
+
+  - name: copy ttml default page on managed server>
+    tags: html_page
+    copy:
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 644
 
   - name: install vim-air on internal
     tags: vim_air
