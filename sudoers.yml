@@ -1,0 +1,28 @@
+
+---
+
+- hosts: remotes
+  become: true
+  tasks: 
+    
+   - name: new sudoers user
+     tags: always
+     user:
+       name: simone
+       groups: root
+
+   - name: add ssh key for the new user
+     tags: always
+     authorized_key:
+       user: simone
+       key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDuH5XcI00GvXjUvR4Ej5e17Mi5zDF8gud/Zl0kKCNGY ansible
+
+   - name: add sudoers file to managed machines
+     tags: always
+     copy:
+       src: sudoers_simone
+       dest: /etc/sudoers.d/simone  
+       owner: root
+       group: root
+       mode: 440      
+  

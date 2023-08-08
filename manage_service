@@ -1,0 +1,12 @@
+---
+
+- hosts: internal_server
+  become: true
+  tasks:
+
+  - name: start_apache
+    tags: start
+    service:
+      name: apache2
+      state: restarted
+      enabled: yes

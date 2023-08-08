@@ -1,0 +1,13 @@
+
+---
+
+- hosts: internal_server  
+  become: true
+  tasks:
+  
+
+  - name: inlinefile_module
+    lineinfile:
+      path: ~/test/inline.txt
+      line: ServerVova == "pidor"
+       

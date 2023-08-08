@@ -12,6 +12,20 @@
         - vim-nox    
       state: latest
       update_cache: yes
+
+- hosts: external 
+  become: true
+  tasks: 
+  
+  - name: usage of the module FETCH
+    tags: fetch
+    unarchive:
+      url: https://wingware.com/pub/wing-101/9.1.1.1/wing-101-9_9.1.1-1_amd64.deb 
+      dest: /root/ansible_execise/wing
+      mode: 644
+      owner: root
+      group: root 
+                  
  
     when: ansible_distribution_version == "Ubuntu"
 
